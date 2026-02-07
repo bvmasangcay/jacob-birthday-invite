@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flip Out Birthday Invite</title>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #0e0e0e;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+    color: white;
+  }
+
+  /* Neon glow header */
+  .header {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 20px;
+    color: #7CFF00;
+    text-shadow: 0 0 10px #7CFF00, 0 0 20px #7CFF00;
+  }
+
+  /* PDF container */
+  .pdf-wrapper {
+    width: 92%;
+    height: 85vh;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid #7CFF00;
+    border-radius: 18px;
+    box-shadow: 0 0 20px rgba(124,255,0,0.4);
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Animated neon border pulse */
+  @keyframes pulse {
+    0% { box-shadow: 0 0 10px rgba(124,255,0,0.4); }
+    50% { box-shadow: 0 0 25px rgba(124,255,0,0.9); }
+    100% { box-shadow: 0 0 10px rgba(124,255,0,0.4); }
+  }
+
+  .pdf-wrapper {
+    animation: pulse 3s infinite;
+  }
+
+  /* Subtle floating glow orbs */
+  .orb {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(124,255,0,0.4), transparent 70%);
+    border-radius: 50%;
+    filter: blur(20px);
+    animation: float 10s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-40px) translateX(20px); }
+    100% { transform: translateY(0) translateX(0); }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Background music -->
+<audio id="bgm" autoplay loop>
+  <source src="bestday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Mobile autoplay fallback
+document.addEventListener('click', function () {
+  const audio = document.getElementById('bgm');
+  if (audio.paused) audio.play();
+});
+</script>
+
+<!-- Floating neon glow orbs -->
+<div class="orb" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+<div class="orb" style="top: 70%; left: 70%; animation-delay: 2s;"></div>
+<div class="orb" style="top: 40%; left: 20%; animation-delay: 4s;"></div>
+
+<!-- Header -->
+<div class="header">🎉 You're Invited to Jacob's Flip Out Party 🎉</div>
+
+<!-- PDF Viewer -->
+<div class="pdf-wrapper">
+  <embed src="invite.pdf"
+         type="application/pdf"
+         width="100%"
+         height="100%">
+</div>
+
+</body>
+</html>
